@@ -3,13 +3,14 @@ const authRoute = Router();
 
 /** import authController and middlewares */
 import * as authController from "~/controllers/authController";
-import refreshToken from "~/controllers/refreshToken";
 import * as authMiddlewares from "~/middlewares/authMiddleware";
+import refreshToken from "~/controllers/refreshToken";
+import { registerMail } from "~/controllers/mailer";
 
 /** POST Method */
 authRoute.route("/register").post(authController.register);
 
-authRoute.route("/registerMail").post();
+authRoute.route("/registerMail").post(registerMail);
 
 authRoute.route("/authenticate").post((req, res) => res.end());
 
